@@ -1,9 +1,10 @@
 <h1 align="center">
 	<br><img src="logo.jpg"  width="700" alt="logo"><br>
 
-	HIPERCUBO-WS - Small webserver written in Go Language for learning purposes.
+	HIPERCUBO-WS
 </h1>
 
+# Small webserver written in Go Language for learning purposes.
 # Links
 
 	* https://astaxie.gitbooks.io/build-web-application-with-golang/en/03.2.html
