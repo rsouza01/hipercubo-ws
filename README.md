@@ -1,5 +1,5 @@
 <h1 align="center">
-	<br><img src="logo.jpg" alt="logo"><br>
+	<br><img src="logo.jpg"  width="700" alt="logo"><br>
 
 	HIPERCUBO-WS - Small webserver written in Go Language for learning purposes.
 </h1>
