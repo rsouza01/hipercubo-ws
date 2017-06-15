@@ -1,0 +1,7 @@
+{
+    "go.gopath": "/usr/share/go",
+    "go.buildOnSave": true,
+    "go.lintOnSave": true,
+    "go.vetOnSave": true,
+    "go.formatTool": "go fmt"
+}

@@ -1,36 +1,31 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"io"
 	"net/http"
-	"strconv"
-	"sync"
+	"fmt"
+	"github.com/spf13/viper"
 )
 
-var counter int
-var mutex = &sync.Mutex{}
-
-func echoString(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello")
-}
-
-func incrementCounter(w http.ResponseWriter, r *http.Request) {
-	mutex.Lock()
-	counter++
-	fmt.Fprintf(w, strconv.Itoa(counter))
-	mutex.Unlock()
+func hello(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "Hello world!")
 }
 
 func main() {
-	http.HandleFunc("/", echoString)
+	viper.SetConfigName("app")     // no need to include file extension
 
-	http.HandleFunc("/increment", incrementCounter)
+	err := viper.ReadInConfig()
 
-	http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hi")
-	})
+	if err != nil {
+		fmt.Println("Config file not found...")
+	} else {
+		dev_port := viper.GetInt("server.port")
 
-	log.Fatal(http.ListenAndServe(":8081", nil))
+		fmt.Printf("\nServer Config found:\n port = %d\n",
+			dev_port)
 
+	}
+
+	http.HandleFunc("/", hello)
+	http.ListenAndServe(":8000", nil)
 }
